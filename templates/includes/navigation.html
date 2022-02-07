@@ -1,0 +1,40 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        .custom-font{
+            font-family: Montserrat, sans-serif;
+        }
+        
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand fst-italic custom-font" href="{% url 'index' %}">Vet Care</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link  custom-font " aria-current="page" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-font  " href="{% url 'book_appointment' %}">Book An Appointment</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  custom-font dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Blogs
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item custom-font " href="{% url 'blog' %}">View Blogs</a></li>
+              <li><a class="dropdown-item custom-font " href="{% url 'new_blog' %}">New Blog</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" action="{% url 'search' %}" autocomplete="off" >
+          <input class="form-control custom-font rounded-0" type="search" 
+          placeholder="Blog Search" aria-label="Search" name="query">
+          <button class="btn btn-light rounded-0" type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+        </form>
+      </div>
+    </div>
+  </nav>

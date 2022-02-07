@@ -1,0 +1,105 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        .custom-font{
+            font-family: Montserrat, sans-serif;
+        }
+    .banner-img{
+      height: 35rem;
+      width: 80rem;
+      margin-top: 0;
+      z-index: -1;
+    }
+    .details{
+      background-image: url('{% static "images/banner.jpg" %}');
+      background-size: cover;
+      height: 35rem;
+      width: 80rem;
+    }
+    .container{
+      background-color: white;
+
+    }
+    .containerr{
+      width: 99.125%;
+    }
+    .custom-img{
+      width: 100.9%;
+    }
+    .c-border{
+      border: 5px black;
+    }
+    .c-border:hover{
+      border-radius: 0 0 10px gray;
+    }
+  </style>
+{% endblock css %}
+  
+
+
+{% block content %}
+<div class="containerr px-0">
+    <img class="custom-img" src="{% static 'images/home-banner.png' %}" alt="">
+
+
+    <h3 class="display-8 p-4 custom-font border-bottom" style="text-align: center;">MOST PREFERRED DOGS AND CATS SUPPLIES</h3>
+   
+        <div class="container">
+          <div class="row">
+            {% for items in essentials %}
+            <div class="col-lg-6 c-border">
+              <div class="row my-3">
+                <div class="col-8">
+                  <h3 class="py-2 custom-font">{{items.name}}</h3>
+                  <p class="custom-font">{{items.description}}</p>
+                </div>
+                <div class="col-4">
+                  <img class="img-fluid" src="{{items.image.url}}" alt="">
+                </div>
+              </div>
+            </div>
+            {% empty %}
+              <div class="alert alert-warning text-center" role="alert">
+                  <h4 class="alert-heading">No Items found!</h4>
+              </div>
+            {% endfor %}
+      
+          </div>
+        </div>
+      
+
+                <div class="containerr px-4 py-5" id="hanging-icons">
+                  <h2 class="pb-2 border-bottom custom-font px-5">Latest Blogs</h2>
+                
+
+                <div class="container my-5">
+                  <div class="row">
+                    {% for item in blogs %}
+                    <div class="col-lg-4">
+                      <div>
+                        <h3 class="custom-font">{{item.title}}</h3>
+                        <p class="custom-font">{{item.details|truncatechars:250}}</p>
+                        <a href="{% url 'detailed_blog' item.id %}" class="btn btn-primary custom-font">
+                          View Full Blog
+                        </a>
+                      </div>
+                    
+                        
+                    </div>
+                      {% empty %}
+                        <div class="alert alert-warning text-center" role="alert">
+                          <h4 class="alert-heading">No Blogs found!</h4>
+                        </div>
+                      {% endfor %}
+                    </div>
+                </div>
+                
+                
+              </div>
+    </div>
+    
+{% endblock content %}
+    

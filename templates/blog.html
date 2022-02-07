@@ -1,0 +1,54 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block css %}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        .custom-font{
+            font-family: Montserrat, sans-serif;
+        }
+    body{
+            background-image: linear-gradient( -90deg, #2ba192 0%, #0a88f0b9 100%);
+        }
+        .custom-bg{
+          background-color: white;
+        }
+        .c-border{
+          border-radius: 25px;
+        }
+  </style>
+{% endblock css %}
+  
+
+
+
+{% block content %}
+
+
+{% for item in blogs %}
+<div style="margin-top: 25px;"></div>
+<div class="container custom-bg px-0 c-border">
+  <div class="col-lg-11 mx-auto c-border">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative c-border">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h3 class="custom-font mb-0">{{item.title}}</h3>
+        <div class="mb-1 text-muted custom-font">{{item.display_name}}</div>
+        <p class="card-text mb-auto custom-font">{{item.details|truncatechars:500}}</p>
+        <a href="{% url 'detailed_blog' item.id %}" class="stretched-link custom-font">Read More</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img class="bd-placeholder-img py-3 " width="400" height="250" src="{{item.image.url}}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+  {% empty %}
+        <div class="alert alert-warning text-center" role="alert">
+            <h4 class="alert-heading">No Blogs found!</h4>
+        </div>
+  {% endfor %}
+{% endblock content %}
+    

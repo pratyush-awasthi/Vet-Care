@@ -1,0 +1,48 @@
+{% extends 'layout/base.html' %}
+
+
+{% block css %}
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        .custom-font{
+            font-family: Montserrat, sans-serif;
+        }
+    body{
+            background-image: linear-gradient( -90deg, #2ba192 0%, #0a88f0b9 100%);
+        }
+        .blog-img{
+            width: 100%;
+        }
+        .custom-bg{
+            background-color: white;
+        }
+        .c-size{
+            font-size: 1.25rem;
+        }
+  </style>
+{% endblock css %}
+
+{% block content %}
+<div class="header">
+
+</div>
+<div class="container">
+    <div class="row ">
+        <div class="col-md-12 custom-bg py-2">
+            <img class="blog-img" src="{{blogs.image.url}}" alt="">
+            <h1 class="custom-font my-3">{{blogs.title}}</h1>
+            <p class="custom-font c-size my-2">By : {{blogs.author_name}} on {{blogs.date}}</p>
+            <p class="custom-font">{{blogs.details|linebreaksbr}}</p>
+        
+        <div class="footer">
+            <a class="custom-font btn btn-primary" href="{% url 'edit_blog' blogs.id %}" role="button">
+                Edit
+            </a>
+            <a class="custom-font btn btn-danger" href="{% url 'blog_delete' blogs.id %}" role="button">
+                Delete
+            </a>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}

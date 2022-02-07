@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block css %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        .custom-font{
+            font-family: Montserrat, sans-serif;
+        }
+        body{
+            background-image: linear-gradient( -90deg, #2ba192 0%, #0a88f0b9 100%);
+        }
+        .custom-width{
+            width: 50%;
+            align-items: center;
+        }
+        .custom-img{
+            align-items: center;
+        }
+    </style>
+{% endblock css %}
+    
+
+
+{% block content %}
+
+<div class="container my-2 mx-auto">
+    {% if messages %}
+    {% for msg in messages %}
+        {% if msg.tag == 'error' %}
+            <p class="custom-font bg-danger text-white text-center round-sm p-3">{{msg}}</p>
+        {% else %}
+            <p class="bg-success text-white text-center round-sm p-3 custom-font">{{msg}}</p>
+        {% endif %}
+    {% endfor %}   
+    {% endif %}
+   <div class="form-bg">
+       <div class="row custom-img">
+           <div class="col-lg-6 col-md-6 col-sl-12">
+                <h1 class="text-center custom-font">Book an Appointment</h1>
+                <form class="form-bg custom-font" method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button class="btn btn-primary btn-lg btn-block custom-font">Book Appointment</button>
+                </form>
+           </div>
+           <div class="col-lg-6 col-md-6 col-sl-12 ">
+               <img class="img-fluid" src="{% static 'images/appointment-img3.png' %}" alt="">
+           </div>
+    </div>
+</div>
+  </div>
+{% endblock content %}
+    
