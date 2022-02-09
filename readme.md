@@ -22,7 +22,7 @@ Inorder to create a superuser for the admin portal you need to write
 
 Inorder to save modifications done in the database like the changes in the table format or anything else then you need to write
 ```
-    python manage.py migrate
+    python manage.py makemigrations
 ```
 
 If you want to create a new app in the existing server then write
