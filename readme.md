@@ -37,6 +37,8 @@ Requirements :
 3) Django Extensions
 4) Django Crispy Forms
 5) Crispy Forms Boostrap5
+6) Social Auth App Django
+7) Pillow
 
 ### How to setup a New Django Project?
 
